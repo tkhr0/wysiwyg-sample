@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./containers/app/Dockerfile
+    ports:
+        - '3000:3000'
+    working_dir: /myapp
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=root
+    volumes:
+      - .:/myapp
+      - node_modules:/myapp/node_modules:cached
+      - bundle:/usr/local/bundle:cached
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+
+  db:
+    image: mysql:5.6
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - data:/var/lib/mysql
+
+  yard:
+    image: ruby:2.4.3
+    working_dir: /myapp
+    ports:
+        - '8808:8808'
+    # command: sh -c "bundle exec yard server"
+    # volumes:
+    #   - ./.yardoc:/myapp/.yardoc:cached
+    #   - ./Gemfile:/myapp/Gemfile:cached
+    #   - ./Gemfile.lock:/myapp/Gemfile.lock:cached
+    #   - ./app:/myapp/app/:cached
+    #   - ./lib/:/myapp/lib/:cached
+    #   - ./spec/:/myapp/spec/:cached
+    #   - bundle:/usr/local/bundle:cached
+
+volumes:
+  data:
+  bundle:
+  node_modules:
