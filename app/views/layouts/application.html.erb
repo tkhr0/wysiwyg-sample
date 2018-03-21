@@ -5,9 +5,18 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= yield :header_bottom %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+    </footer>
   </body>
 </html>
