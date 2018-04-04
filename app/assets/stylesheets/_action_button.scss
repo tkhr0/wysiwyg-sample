@@ -1,0 +1,27 @@
+a.act-working-holiday {
+	width: 660px;
+	height: 120px;
+	background: url('/theme/Pc/img/working_holiday/toriyose_pc.png') no-repeat center center;
+	background-size: auto;
+	margin: auto;
+	display: block;
+	transition: 0s ease-in-out;
+	&:hover{
+		background:url('/theme/Pc/img/working_holiday/toriyoseOn_pc.png') no-repeat center center #ffffff;
+		transition: 0s ease-in-out;
+	}
+}
+
+a.act-ryugaku {
+	width: 660px;
+	height: 120px;
+	background: url('/theme/Pc/img/common/toriyose_pc.png') no-repeat center center;
+	background-size: auto;
+	margin: auto;
+	display: block;
+	transition: 0s ease-in-out;
+	&:hover{
+		background: url('/theme/Pc/img/common/toriyoseOn_pc.png') no-repeat center center #ffffff;
+		transition: 0s ease-in-out;
+	}
+}

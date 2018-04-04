@@ -1,0 +1,145 @@
+@import "common";
+
+/*
+ * マークダウン　パーツ
+ */
+
+p img {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+h2 {
+	font-size: 18px;
+	margin-top: 30px;
+	padding: 13px 15px;
+}
+
+h3 {
+	font-size: 17px;
+	margin-top: 25px;
+}
+
+h4 {
+	font-size: 16px;
+	margin-top: 25px;
+}
+
+table {
+	margin: 0 auto;
+	margin-top: 20px;
+	overflow-x: auto;
+	webkit-overflow-scrolling: touch;
+	border: 1px solid #dddddd;
+	line-height: normal;
+	width: 95%;
+	thead {
+		background-color: #ffeeee;
+		tr {
+			border: 1px solid #dddddd;
+			th {
+				border: 1px solid #dddddd;
+			}
+		}
+	}
+	tbody {
+		border: 1px solid #dddddd;
+		tr {
+			border: 1px solid #dddddd;
+			td {
+				border: 1px solid #dddddd;
+			}
+		}
+	}
+	td, th {
+		padding: 5px 14px;
+		font-size: 14px;
+	}
+}
+
+strong {
+	font-size: $fs-std;
+	line-height: 1.9;
+	letter-spacing: 0.3px;
+	font-weight: bold;
+}
+
+em {
+	font-size: $fs-std;
+	line-height: 1.9;
+	letter-spacing: 0.3px;
+	font-style: italic;
+}
+
+/*
+
+name: markdown pc リスト
+tag:
+ - markdown
+ - pc
+ - リスト
+category:
+ - component
+
+markdownのリストです
+
+```html
+
+<div class="pc">
+	<div class="singlepageContents">
+		<ul>
+			<li>ulリスト</li>
+			<li>ulリスト
+				<ul>
+					<li>ulリスト 入れ子</li>
+				</ul>
+			</li>
+			<li>ulリスト
+				<ol>
+					<li>olリスト 入れ子</li>
+				</ol>
+			</li>
+		</ul>
+
+		<ol>
+			<li>olリスト</li>
+			<li>olリスト
+				<ul>
+					<li>ulリスト 入れ子</li>
+				</ul>
+			</li>
+			<li>olリスト
+				<ol>
+					<li>olリスト 入れ子</li>
+				</ol>
+			</li>
+		</ol>
+	</div>
+</div>
+```
+*/
+
+section {
+	ul, ol {
+		margin-top: 15px;
+		padding-left: 20px;
+	}
+	ul {
+		list-style: disc;
+	}
+	ol {
+		list-style: decimal;
+	}
+	li {
+		font-size: $fs-std;
+		line-height: $lh-std;
+		letter-spacing: $ls-std;
+		list-style: inherit;
+		ul, ol {
+			margin-top: inherit;
+		}
+	}
+}
