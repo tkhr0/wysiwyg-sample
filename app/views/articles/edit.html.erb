@@ -4,7 +4,10 @@
 <% end %>
 
 <div id="editable-content">
-  <editor>
+  <editor
+    save-path=<%= article_path(@article, format: :json) %>
+    hidden-method=<%= @article.new_record? ? 'post' : 'patch' %>
+  >
     <%== @article.draft %>
   </editor>
 </div>
