@@ -2,7 +2,8 @@
   <div class="editor-pallete">
     <div class="editor">
       <button>hoge</button>
-      <button>save</button>
+      <button @click="save">save</button>
+      <button @click="myButton">MyButton</button>
     </div>
   </div>
 </template>
@@ -10,11 +11,18 @@
 <script>
 
 export default {
-  data: function() {
-    return {
-      hoge: 'hoge'
+  methods: {
+    save: function () {
+      this.$emit('save')
+    },
+
+    myButton: function () {
+      window.getSelection().getRangeAt(0).insertNode(
+        document.createElement('my-button')
+      )
+      this.$emit('addCustomTag')
     }
-  },
+  }
 }
 </script>
 
