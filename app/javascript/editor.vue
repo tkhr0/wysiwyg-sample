@@ -18,6 +18,7 @@ import Vue from 'vue/dist/vue.esm.js'
 import EditorPalette from './editor_palette'
 import axios from 'axios'
 import Gadgets from 'editor_gadgets'
+import revertGadgets from 'revert_gadgets'
 
 axios.defaults.headers['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
 
@@ -77,6 +78,7 @@ export default {
     // Vue でマウント状態のガジェットを
     // カスタムタグの状態に戻す
     _revertGadgets: function (text) {
+      return revertGadgets(text)
     }
   }
 }
