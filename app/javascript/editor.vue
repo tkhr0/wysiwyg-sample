@@ -7,14 +7,17 @@
     <div>
       <editor-palette
         v-on:save="save"
+        v-on:addCustomTag="addCustomTag"
         ></editor-palette>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue/dist/vue.esm.js'
 import EditorPalette from './editor_palette'
 import axios from 'axios'
+import Gadgets from 'editor_gadgets'
 
 axios.defaults.headers['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
 
@@ -29,9 +32,22 @@ export default {
     'hiddenMethod'
   ],
 
+  data: function () {
+    return {
+      gadgetVm: null,
+      gadgetVmConfig: {
+        el: '.content',
+        mixins: [Gadgets]
+      }
+    }
+  },
+
   mounted: function () {
-    this.$el.querySelector('.content')
-      .contentEditable = true
+    this.$el.querySelector('.content').contentEditable = true
+
+    this.gadgetVm = new Vue(this.gadgetVmConfig)
+  },
+
   methods: {
     save: function () {
       const revertedContents = this._revertGadgets(document.querySelector('.content').innerHTML)
@@ -47,6 +63,15 @@ export default {
         console.log(data)
       }).catch((res) => {
       })
+    },
+
+    addCustomTag: function () {
+      this._reloadGadget()
+    },
+
+    _reloadGadget: function () {
+      this.gadgetVm.$destroy()
+      this.gadgetVm = new Vue(this.gadgetVmConfig)
     },
 
     // Vue でマウント状態のガジェットを
