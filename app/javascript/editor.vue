@@ -35,7 +35,7 @@ export default {
 
   data: function () {
     return {
-      gadgetVm: null,
+      gadgetVm: null,      // ガジェットを描画する用の Vue
       gadgetVmConfig: {
         el: '.content',
         mixins: [Gadgets]
@@ -71,6 +71,8 @@ export default {
     },
 
     _reloadGadget: function () {
+      // 強制的に再マウントすることで
+      // カスタムタグを描画
       this.gadgetVm.$destroy()
       this.gadgetVm = new Vue(this.gadgetVmConfig)
     },
