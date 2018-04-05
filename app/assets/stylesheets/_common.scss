@@ -1,0 +1,261 @@
+/*
+ * mein css: style.scss
+ *
+ */
+
+$text-shadow: -1px -1px 0 #444444, 1px -1px 0 #444444, -1px 1px 0 #444444, 1px 1px 0 #444444;
+//$w3c-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fceded',GradientType=0 );
+$w3c-filter: #ffffff;
+
+$pink-border: #fc8a8a;
+$pink-background: #ffeeee;
+
+$fs-h1: 25px;		// font-size
+$fs-h2: 22px;
+$fs-h3: 19px;
+$fs-h4: 17px;
+$fs-large: 18px;
+$fs-std: 16px;   // 標準フォントサイズ
+$fs-small: 14px;
+
+$lh-h1: 35px;		// line-height
+$lh-h2: 1.4;
+$lh-h3: 1.5;
+$lh-h4: 1.5;
+$lh-std: 1.9;   // 標準line-height
+
+$ls-h1: 1.3px;
+$ls-h2: 1.0px;
+$ls-h3: 0.8px;
+$ls-h4: 0.8px;
+$ls-std: 0.3px;   // 標準letter-spacing
+
+// コンテンツの最大幅
+$content-width: 960px;
+
+@mixin mainImg {
+	position:relative;
+	width:730px;
+	margin:0 auto;
+}
+@mixin mainTitle($left:null, $top:null, $font-size:null, $line-height:null) {
+	@if $left == null {
+		$left:20px;
+	}
+	@if $top == null {
+		$top:65px;
+	}
+	@if $font-size == null {
+		$font-size:44px;
+	}
+	.title {
+		position:absolute;
+		left:$left;
+		top:$top;
+		color:#ffffff;
+		font-size:$font-size;
+		line-height:$line-height;
+		font-weight:normal;
+		text-shadow:$text-shadow;
+	}
+}
+@mixin mainEnglish($left:null, $top:null, $font-size:null, $line-height:null, $font-family:true) {
+	@if $left == null {
+		$left:20px;
+	}
+	@if $top == null {
+		$top:105px;
+	}
+	@if $font-size == null {
+		$font-size:16px;
+	}
+	.english {
+		position:absolute;
+		left:$left;
+		top:$top;
+		color:#ff6666;
+		font-size:$font-size;
+		@if $line-height != null {
+			line-height:$line-height;
+		}
+		font-weight:normal;
+		letter-spacing:2px;
+		text-shadow:$text-shadow;
+		@if $font-family == true {
+			font-family:'Comic Sans', "Comic Sans MS", cursive;
+		} @else if $font-family == false {
+			//指定しない場合
+		} @else {
+			font-family:$font-family;
+		}
+	}
+}
+
+@mixin border01-style {
+  // margin: 1px 1px 1px 1px;
+  box-shadow: 0 0 0 1px rgba(255, 238, 238, 1);
+  border-style: solid;
+  border-width: 1px 1px 1px 4px;
+  border-image: url('/theme/Pc/img/common/border01.png') 1 1 1 4 / 1px 1px 1px 4px round;
+  padding: 5px 15px;
+  background: #ffeeee;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+@mixin on01-style {
+  display: block;
+  border: 1px solid #faf7ef;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  border-radius: 3px;
+  background: #faf7ef;
+  padding: 4px 5px 4px 5px;
+  font-size: 11px;
+}
+
+@mixin off01-style {
+  display: block;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  border-radius: 3px;
+  background: #ffffff;
+  padding: 4px 5px 4px 5px;
+  color: #cccccc;
+  font-size: 11px;
+}
+
+// 旧国ページ
+@mixin h2-background01 {
+  margin: 20px 0 15px 0;
+  border: 1px solid #ffdddd;
+  border-radius: 5px;
+  box-shadow: 1px 1px 0px 0px rgba(255, 169, 168, 1);
+  padding: 10px;
+  background: #fceded;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, white 0%, white 52%, #fceded 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(52%, white), color-stop(100%, #fceded));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 0%, white 52%, #fceded 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 0%, white 52%, #fceded 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, white 0%, white 52%, #fceded 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, white 0%, white 52%, #fceded 100%);
+  /* W3C */
+  filter: $w3c-filter;
+}
+
+// 新国ページ
+@mixin h1-background {
+	@include h2-background01;
+}
+
+@mixin accent-link{
+	display: block;
+	background: url("/theme/Pc/img/sideLeft/icon02.png") 0 8px no-repeat;
+	margin: 0 0 5px 0;
+	padding: 5px 20px 5px 15px;
+	color: #008ad3;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+@mixin readmore {
+	margin-top: 20px;
+	a {
+		display: block;
+		border: 1px solid #fc8a8a;
+		border-radius: 4px;
+		margin: 0 auto;
+		padding: 7px 25px;
+		max-width: 400px;
+		color: #fc8a8a;
+		font-size: 18px;
+		line-height: 24px;
+		text-align: center;
+		text-decoration: none;
+	}
+}
+
+@mixin inline-href {
+	ul {
+		text-align: center;
+		li {
+			border: solid 1px $pink-border;
+			border-radius: 5px;
+			display: inline-block;
+			width: 49%;
+			margin: 3px auto;
+			text-align: center;
+			a {
+				display: block;
+				padding: 10px 20px;
+				font-size: 14px;
+				font-weight: 700;
+				text-decoration: none;
+				color: #fc8a8a;
+				&:hover {
+					color: #ffffff;
+					background-color: #e56476;
+				}
+			}
+		}
+	}
+}
+
+@mixin actionButton {
+	.center {
+		text-align: center;
+	}
+	.request-btn01 {
+		.tilt {
+			color: #cc0066;
+			font-size: 1.3rem;
+			line-height: 1.8rem;
+			font-weight: bold;
+		}
+		.act_btn {
+			width: 50%;
+		}
+	}
+}
+
+%experience-category-box {
+	border-top: 1px dotted #999999;
+	margin:0 0 20px 0;
+	p {
+		background: url('/theme/Pc/img/common_icon/arrow01.png') no-repeat right center;
+		background-position: 97% center;
+		background-size: 8px 14px;
+		border-bottom: 1px dotted #999999;
+		padding: 10px;
+		color: #008bcc;
+		font-size: 16px;
+		line-height: 26px;
+		font-weight:bold;
+		text-decoration: none;
+		text-align: left;
+	}
+	.flag {
+		display: inline-block;
+		background-repeat:no-repeat;
+		background-position:left 4px;
+		background-size:20px 14px;
+		padding: 0 0 0 25px;
+		color: #008bcc;
+		font-size: 16px;
+		line-height: 26px;
+		font-weight:bold;
+		text-decoration: none;
+		text-align: left;
+	}
+	.num {
+		color: #999999;
+		font-size:14px;
+		font-weight:bold;
+	}
+}
