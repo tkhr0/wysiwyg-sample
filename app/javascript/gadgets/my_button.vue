@@ -1,8 +1,20 @@
 <template>
   <div>
-    <a href="/">TOPへ</a>
+    <a href="/">{{ text }}</a>
   </div>
 </template>
+
+<script>
+
+export default {
+  props: {
+    text: {
+      default: 'TOPへ'
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 a {

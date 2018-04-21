@@ -18,20 +18,26 @@ export default {
     },
 
     myButton: function () {
-      window.getSelection().getRangeAt(0).insertNode(
-        document.createElement('my-button')
-      )
-      this.$emit('addCustomTag')
+      this._insertGadget('my-button', [
+        {
+          name: 'text',
+          value: 'マイボタン'
+        }
+      ])
     },
 
     countryList: function () {
       this._insertGadget('country-list')
     },
 
-    _insertGadget: function (name) {
-      window.getSelection().getRangeAt(0).insertNode(
-        document.createElement(name)
-      )
+    _insertGadget: function (name, attrs=[]) {
+      const element = document.createElement(name)
+
+      for (const attr of attrs) {
+        element.setAttribute(attr['name'], attr['value'])
+      }
+
+      window.getSelection().getRangeAt(0).insertNode(element)
       this.$emit('addCustomTag')
     }
   }
