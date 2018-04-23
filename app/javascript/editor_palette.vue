@@ -33,6 +33,7 @@ export default {
     _insertGadget: function (name, attrs=[]) {
       const element = document.createElement(name)
 
+      // アトリビュートを設定
       for (const attr of attrs) {
         element.setAttribute(attr['name'], attr['value'])
       }

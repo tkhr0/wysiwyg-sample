@@ -11,9 +11,9 @@ export default function (innerHTML) {
   // コンポーネントを消して
   // カスタムタグを入れる
   for (let gadget of gadgets) {
-    const component = document.createElement(
-      gadget.getAttribute('data-g-name')
-    )
+    // カスタムタグを作成
+    const tagName = gadget.getAttribute('data-g-name')
+    const component = document.createElement(tagName)
     gadget.parentNode.insertBefore(component, gadget)
     gadget.parentNode.removeChild(gadget)
   }
