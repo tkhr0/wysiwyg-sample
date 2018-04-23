@@ -6,7 +6,15 @@ import Gadgets from 'gadgets/gadgets'
 function addMarker() {
   const mixin = {
     mounted: function () {
+      // タグの名前
       this.$el.setAttribute('data-g-name', this.$options._componentTag)
+
+      // タグの識別子
+      // ref で props を取る
+      const ref = findSelfRef(this)
+      if (ref) {
+        this.$el.setAttribute('data-g-ref', ref)
+      }
 
       // 中身は編集させない
       this.$el.setAttribute('contenteditable', false)
@@ -27,6 +35,19 @@ function addMarker() {
   }
 
   Gadgets.components = processed
+}
+
+// component の親から自身への ref を取得する
+function findSelfRef(component) {
+  const refs = component.$parent.$refs
+
+  for (let ref in refs) {
+    if (refs[ref] == component) {
+      return ref
+    }
+  }
+
+  return null
 }
 
 addMarker()
