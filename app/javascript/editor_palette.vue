@@ -11,6 +11,25 @@
 
 <script>
 
+function _getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function _getRandomString() {
+  const seed = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const stringLength = 6
+
+  let string = ''
+  for (let i=0; i < stringLength; i++) {
+    const idx = _getRandomInt(0, seed.length)
+    string += seed[idx]
+  }
+
+  return string
+}
+
 export default {
   methods: {
     save: function () {
@@ -37,6 +56,10 @@ export default {
       for (const attr of attrs) {
         element.setAttribute(attr['name'], attr['value'])
       }
+
+      // set ref
+      // props を復元するときに使う
+      element.setAttribute('ref', _getRandomString())
 
       window.getSelection().getRangeAt(0).insertNode(element)
       this.$emit('addCustomTag')
