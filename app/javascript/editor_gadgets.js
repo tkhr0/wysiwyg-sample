@@ -7,6 +7,9 @@ function addMarker() {
   const mixin = {
     mounted: function () {
       this.$el.setAttribute('data-g-name', this.$options._componentTag)
+
+      // 中身は編集させない
+      this.$el.setAttribute('contenteditable', false)
     }
   }
 
