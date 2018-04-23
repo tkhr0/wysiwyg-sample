@@ -80,7 +80,15 @@ export default {
     // Vue でマウント状態のガジェットを
     // カスタムタグの状態に戻す
     _revertGadgets: function (text) {
-      return revertGadgets(text)
+      // props を取り出す
+      const attrs = {}
+      const refs = this.gadgetVm.$refs
+      for (let ref in refs) {
+        const component = refs[ref]
+        attrs[ref] = component.$props
+      }
+
+      return revertGadgets(text, attrs)
     }
   }
 }
