@@ -15,10 +15,10 @@
 
 <script>
 import Vue from 'vue/dist/vue.esm.js'
-import EditorPalette from './editor_palette'
+import EditorPalette from '@/editor/editor_palette'
 import axios from 'axios'
-import Gadgets from 'editor_gadgets'
-import revertGadgets from 'revert_gadgets'
+import Gadgets from '@/editor/editor_gadgets'
+import revertGadgets from '@/editor/revert_gadgets'
 
 axios.defaults.headers['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content')
 

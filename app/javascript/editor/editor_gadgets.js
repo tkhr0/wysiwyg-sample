@@ -1,6 +1,6 @@
 // エディタで読み込むための下準備をする
 
-import Gadgets from 'gadgets/gadgets'
+import Gadgets from '@/gadgets/gadgets'
 
 // オリジナルタグを元に戻すときに使うマーカーを追加する
 function addMarker() {
